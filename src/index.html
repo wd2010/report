@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+<body>
+    <script>
+      window.addEventListener('error',e=>{
+        console.log(e)
+        return true
+      },true)
+
+      window.addEventListener('unhandledrejection',e=>{
+        e.preventDefault()
+        console.log(e)
+        return true
+      },false)
+        Promise.reject('eeeee');
+        new Promise((resolve,reject)=>{
+          resolve()
+        }).then(()=>{
+          throw 'yyy'
+        })
+    </script>
+    <img src='./404.png' />
+
+</body>
+</html>
