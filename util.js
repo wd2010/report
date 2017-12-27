@@ -5,7 +5,6 @@ function CopyMapToServer() {}
 
 CopyMapToServer.prototype.apply = function(compiler) {
 
-  // 设置回调来访问编译对象：
   compiler.plugin('emit',(compilation,callback)=>{
     const assets = compilation.assets;
     console.log(Object.keys(assets))
