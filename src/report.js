@@ -5,8 +5,8 @@
 // },true)
 
 const report=(paramsObj,level)=>{
-  let paramsArr=[],info='',
-  for(let [key,value] of Object.entries(params)){
+  let paramsArr=[],info='';
+  for(let [key,value] of Object.entries(paramsObj)){
     paramsArr.push(`${key}=${encodeURIComponent(value)}`)
   }
   info=paramsArr.join('&');
