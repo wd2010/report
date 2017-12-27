@@ -4,8 +4,12 @@ require("babel-register")({presets: ['env', 'react', 'stage-0']});
 
 const app=require('./app.js').default;
 const router=require('./router/index.js').default;
+const staticServe=require('koa-static');
+const path=require('path');
+
 
 app.use(router.routes())
 app.use(router.allowedMethods())
+app.use(staticServe(path.join(__dirname,'../dist')))
 
 app.listen(3000)

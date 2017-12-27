@@ -5,6 +5,6 @@ import {sendLog} from '../controllers/business';
 
 const router=new Router()
 
-router.get('/business',sendLog)
+router.get('/errlog',sendLog)
 
 export default router
