@@ -16,7 +16,7 @@ const CopyMapToServer=require('./util.js');
     extensions: ['.js','.jsx','.css','.html'],
     modules:[path.resolve(__dirname,'./src'),'node_modules'],
   },
-  devtool:'source-map',
+  devtool:'hidden-source-map',
   module:{
     rules:[
       {

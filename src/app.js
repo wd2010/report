@@ -6,4 +6,5 @@ const app=()=>{
   }
 }
 
+Promise.reject('yyy')
 export default app;

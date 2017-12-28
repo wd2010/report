@@ -3,9 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title><%= htmlWebpackPlugin.options.title %></title>
+
+        <link rel="stylesheet" href="/link.css">
+        <script src="/script.js"></script>
         <script src="/report.js"></script>
     </head>
     <body>
-
+        <script>
+          fetch('/fetch/api')
+        </script>
+        <img src="http://777.jpg" alt="" />
     </body>
 </html>
