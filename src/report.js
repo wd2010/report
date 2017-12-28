@@ -1,10 +1,11 @@
 const report=(paramsObj,level)=>{
   let paramsArr=[];
+  let {type} =paramsObj;
   for(let [key,value] of Object.entries(paramsObj)){
     paramsArr.push(`${key}=${encodeURIComponent(value)}`)
   }
   let info=paramsArr.join('&') || '';
-  let reportUrl=`http://localhost:3000/api/errlog?${info}`;
+  let reportUrl=`http://localhost:3000/api/log/${type}?${info}`;
 
   let reportId=`${+new Date}_${Math.random()*10}`;//上报的Id
   let img=new Image();
@@ -16,9 +17,8 @@ const report=(paramsObj,level)=>{
 }
 
 window.onerror=(msg,url,line,row,err)=>{
-  let type=msg.split(':')[0];
-  console.log('【代码出错】',{msg,url,line,row,err,type})
-  report({msg,url,line,row,err,type})
+  console.log('【代码出错】',{msg,url,line,row,err})
+  report({msg,url,line,row,err,type:'codeerr'})
   return true
 }
 
@@ -29,7 +29,7 @@ window.addEventListener('error',e=>{
     report({
       msg:`${type}_error`,
       url: e.target.src?e.target.src:e.target.href,
-      type,
+      type:'neterr',
     })
   }
 },true)
@@ -40,7 +40,7 @@ window.addEventListener('unhandledrejection',e=>{
   console.log('【unhandledrejection】',e)
   report({
     msg:e.reason,
-    type:e.type,
+    type:'rejecterr',
   })
   return true
 },false)

@@ -1,6 +1,6 @@
 const app=()=>{
   console.log('uuu')
-  errodr;
+  errrtyryyyyyyyyretyfdgfdyrty;
   ()=>{
     console.log('yydy')
   }
