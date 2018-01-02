@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import sourcemap  from 'source-map';
+import {getDateDescription} from '../../util/public';
+import {insertErrLog} from "./createDB/index";
 
 let mapPath=path.join(__dirname,'../sourceMap/main.js.map');
 let sourceObj={};
@@ -27,5 +29,9 @@ export const codeErr=(ctx,next)=>{
   let originSource=sourceObj[result.source]
   let originContent=mapFile.sourcesContent[sources.indexOf(originSource)];
   result['sourceContent']=originContent;
-  return result
+  let {source,line,column,sourceContent,name}=result;
+  let {report_id}=ctx.query;
+  let timestamp=+new Date;
+  let time=getDateDescription(timestamp);
+  insertErrLog({source,line,column,sourceContent,name,timestamp,time,report_id})
 }

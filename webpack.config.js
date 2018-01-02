@@ -3,7 +3,7 @@ const webpack =require('webpack');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CopyMapToServer=require('./util.js');
+const CopyMapToServer=require('./util/wkconfig.js');
 
   module.exports={
   context: path.join(__dirname,'./src'),

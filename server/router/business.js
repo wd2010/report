@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
 import Router from 'koa-router';
-import {businessLog} from '../controllers/business';
+import {getErrList,getErrDetail,reportErr} from '../controllers/business';
 
-const router=new Router()
+const router=new Router();
 
-router.get('/log/:id',businessLog)
+router.get('/log/errlog/list',getErrList)
+router.get('/log/errlog/:id',getErrDetail)
+router.get('/log/:id',reportErr)
 
-export default router
+export default router;

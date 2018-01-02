@@ -1,13 +1,15 @@
 const report=(paramsObj,level)=>{
   let paramsArr=[];
+  let reportId=+new Date;//上报的Id
   let {type} =paramsObj;
+  Object.assign(paramsObj,{report_id:reportId});
   for(let [key,value] of Object.entries(paramsObj)){
     paramsArr.push(`${key}=${encodeURIComponent(value)}`)
   }
-  let info=paramsArr.join('&') || '';
-  let reportUrl=`http://localhost:3000/api/log/${type}?${info}`;
 
-  let reportId=`${+new Date}_${Math.random()*10}`;//上报的Id
+  let info=paramsArr.join('&') || '';
+  let reportUrl=`http://localhost:3000/log/${type}?${info}`;
+
   let img=new Image();
   window[reportId]=img;
   img.onload=img.onerror=()=>{

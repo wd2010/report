@@ -15,11 +15,11 @@ CopyMapToServer.prototype.apply = function(compiler) {
       console.log(key)
       if (key.match(/\.map$/)) {
         data = assets[key].source()
-        let file=fs.readdirSync(path.join(__dirname,'server/sourceMap'))[0];
+        let file=fs.readdirSync(path.join(__dirname,'../server/sourceMap'))[0];
 
-        fs.unlinkSync(path.join(__dirname,'server/sourceMap',file))
+        fs.unlinkSync(path.join(__dirname,'../server/sourceMap',file))
 
-        fs.writeFileSync(path.join(__dirname,'server/sourceMap','main.js.map'), data)
+        fs.writeFileSync(path.join(__dirname,'../server/sourceMap','main.js.map'), data)
         delete assets.key;
       }
     })

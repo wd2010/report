@@ -1,18 +1,24 @@
 import {codeErr} from './codeErr';
+import {findErrList,findErrDetail} from './createDB/index.js';
 
-
-export const businessLog=async(ctx,next)=>{
+//上报err
+export const reportErr=async(ctx,next)=>{
   if(ctx.params.id=='codeerr'){
-    var result=codeErr(ctx);
-    console.log(result)
-    ctx.body=result
-    next()
+    let result=codeErr(ctx);
+    ctx.body='success'
   }else{
-    ctx.body={
-      name:'wd2010'
-    }
-    next()
+    ctx.body={name:'wd2010'}
   }
+}
+//err detail
+export const getErrDetail=async(ctx,next)=>{
+  const {id}=ctx.params;
+  let err_detail=await findErrDetail(id);
+  ctx.body=err_detail;
+}
 
-
+//err list
+export const getErrList=async(ctx,next)=>{
+  let err_list=await findErrList();
+  ctx.body=err_list;
 }
